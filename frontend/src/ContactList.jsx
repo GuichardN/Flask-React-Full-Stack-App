@@ -1,4 +1,5 @@
 import React from "react"
+import styles from "./ContactList.module.css"
 
 const ContactList = ({ contacts, updateContact, updateCallback }) => {
     const onDelete = async (id) => {
@@ -17,32 +18,46 @@ const ContactList = ({ contacts, updateContact, updateCallback }) => {
         }
     }
 
-    return <div>
-        <h2>Contacts</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {contacts.map((contact) => (
-                    <tr key={contact.id}>
-                        <td>{contact.firstName}</td>
-                        <td>{contact.lastName}</td>
-                        <td>{contact.email}</td>
-                        <td>
-                            <button onClick={() => updateContact(contact)}>Update</button>
-                            <button onClick={() => onDelete(contact.id)}>Delete</button>
-                        </td>
+    return (
+        <div className={styles.container}>
+            <h2 className={styles.title}>Contacts</h2>
+            <table className={styles.table}>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    {contacts.map((contact) => (
+                        <tr key={contact.id}>
+                            <td>{contact.firstName}</td>
+                            <td>{contact.lastName}</td>
+                            <td>{contact.email}</td>
+                            <td>
+                                <div className={styles.actionButtons}>
+                                    <button 
+                                        className={styles.updateButton}
+                                        onClick={() => updateContact(contact)}
+                                    >
+                                        Update
+                                    </button>
+                                    <button 
+                                        className={styles.deleteButton}
+                                        onClick={() => onDelete(contact.id)}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default ContactList

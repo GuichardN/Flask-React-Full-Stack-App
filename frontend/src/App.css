@@ -23,3 +23,11 @@
     font-size: 28px;
     font-weight: bold;
 }
+
+.modeltext{
+   
+    text-align: center;
+    color: #000;
+    border: 5px solid black;
+
+}

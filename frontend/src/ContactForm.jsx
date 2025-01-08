@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./App.css"
 
 const ContactForm = ({ existingContact = {}, updateCallback }) => {
     const [firstName, setFirstName] = useState(existingContact.firstName || "");
@@ -33,7 +34,8 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className={styles.modeltext}
+        onSubmit={onSubmit}>
             <div>
                 <label htmlFor="firstName">First Name:</label>
                 <input
